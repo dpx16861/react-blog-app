@@ -1,0 +1,42 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.App {
+    margin: 0 0 40px;
+}
+
+.editor {
+    margin-bottom: 40px;
+}
+
+.nav-tabs {
+    margin-bottom: 20px;
+}
+
+.panel-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.panel-heading .btn {
+    opacity: 0;
+    transition: opacity .5s;
+}
+
+.panel:hover .panel-heading .btn {
+    opacity: 1;
+}
+
+.panel-meta {
+    display: flex;
+    align-items: center;
+}
+
+.panel-time {
+    margin-left: 10px;
+    color: #929292;
+}
