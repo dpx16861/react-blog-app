@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 const Pane = (props) =>
     <div className="tab-pane active">
