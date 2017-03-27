@@ -7,7 +7,7 @@ class Editor extends Component {
     state = {
         title: '',
         content: ''
-    };
+    }
 
     handleTitleChange = (e) => {
         this.setState({
@@ -28,8 +28,7 @@ class Editor extends Component {
             this.props.onPostAdd({
                 ...this.state,
                 id: Date.now(),
-                timestamp:
-                new Date()
+                timestamp: new Date()
             });
 
             this.resetState();

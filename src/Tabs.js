@@ -4,11 +4,11 @@ class Tabs extends Component {
     static defaultProps = {
         selected: 0,
         prefixCls: 'tabs'
-    };
+    }
 
     state = {
         selected: this.props.selected
-    };
+    }
 
     handleClick(e, index) {
         e.preventDefault();
@@ -56,8 +56,10 @@ class Tabs extends Component {
     }
 
     render() {
+        const {prefixCls} = this.props;
+
         return (
-            <div className={this.props.prefixCls}>
+            <div className={prefixCls}>
                 {this.renderTitles()}
                 {this.renderContent()}
             </div>
