@@ -40,3 +40,15 @@ body {
     margin-left: 10px;
     color: #929292;
 }
+
+.tab-content {
+    min-height: 268px;
+}
+
+.tab-pane >:last-child {
+    margin-bottom: 0;
+}
+
+.editor-actions {
+    margin-top: 15px;
+}

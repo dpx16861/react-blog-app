@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Markdown from './Markdown';
+import Tabs from './Tabs';
+import Pane from './Pane';
 
 class Editor extends Component {
     state = {
@@ -23,7 +25,13 @@ class Editor extends Component {
         e.preventDefault();
 
         if (this.state.title && this.state.content) {
-            this.props.onPostAdd({ ...this.state, id: Date.now(), timestamp: new Date() });
+            this.props.onPostAdd({
+                ...this.state,
+                id: Date.now(),
+                timestamp:
+                new Date()
+            });
+
             this.resetState();
         }
     }
@@ -42,56 +50,45 @@ class Editor extends Component {
         } = this.state;
 
         return (
-            <form
-                className="editor container"
-                onSubmit={this.handlePostAdd}
-            >
-                <div className="tabs">
-                    <ul className="nav nav-tabs">
-                        <li className="active">
-                            <a href="#">Write</a>
-                        </li>
-                        <li>
-                            <a href="#">Preview</a>
-                        </li>
-                    </ul>
-
-                    <div className="tab-content">
-                        <div className="tab-pane active">
-                            <div className="form-group">
-                                <input
-                                    className="editor-input form-control"
-                                    type="text"
-                                    placeholder="Title"
-                                    value={title}
-                                    autoFocus
-                                    onChange={this.handleTitleChange}
-                                />
-                            </div>
-
-                            <div className="form-group">
-                                <textarea
-                                    className="editor-textarea form-control"
-                                    rows={10}
-                                    placeholder="Tell your story..."
-                                    value={content}
-                                    onChange={this.handleContentChange}
-                                />
-                            </div>
+            <form className="editor container" onSubmit={this.handlePostAdd}>
+                <Tabs selected={0}>
+                    <Pane label="Write">
+                        <div className="form-group">
+                            <input
+                                className="editor-input form-control"
+                                type="text"
+                                placeholder="Title"
+                                value={title}
+                                autoFocus
+                                onChange={this.handleTitleChange}
+                            />
                         </div>
 
-                        <div className="tab-pane">
-                            {title && <h1>{title}</h1>}
-                            {content && <Markdown content={content} />}
+                        <div className="form-group">
+                            <textarea
+                                className="editor-textarea form-control"
+                                rows={10}
+                                placeholder="Tell your story..."
+                                value={content}
+                                onChange={this.handleContentChange}
+                            />
                         </div>
-                    </div>
-                </div>
+                    </Pane>
 
-                <div className="text-right">
-                    <button
-                        className="btn btn-primary"
-                        type="submit"
-                    >
+                    <Pane label="Preview">
+                        {title || content
+                            ? (
+                                <div>
+                                    <h1>{title}</h1>
+                                    <Markdown content={content} />
+                                </div>
+                            ) : <p>Nothing to preview</p>
+                        }
+                    </Pane>
+                </Tabs>
+
+                <div className="editor-actions text-right">
+                    <button className="btn btn-primary" type="submit">
                         Publish
                     </button>
                 </div>
