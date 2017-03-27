@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Pane = (props) =>
-    <div className="tab-pane active">
+    <div>
         {props.children}
     </div>;
 

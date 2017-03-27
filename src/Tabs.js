@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 
 class Tabs extends Component {
+    static defaultProps = {
+        selected: 0,
+        prefixCls: 'tabs'
+    };
+
     state = {
-        selected: this.props.selected || 0
+        selected: this.props.selected
     };
 
     handleClick(e, index) {
@@ -14,10 +19,15 @@ class Tabs extends Component {
     }
 
     renderTitles() {
+        const {
+            prefixCls,
+            children
+        } = this.props;
+
         return (
-            <ul className="nav nav-tabs">
+            <ul className={`${prefixCls}-nav nav nav-tabs`}>
                 {
-                    this.props.children.map((child, index) => {
+                    children.map((child, index) => {
                         const activeClass = (this.state.selected === index ? 'active' : '');
                         return (
                             <li className={activeClass} key={index}>
@@ -33,16 +43,21 @@ class Tabs extends Component {
     }
 
     renderContent() {
+        const {
+            prefixCls,
+            children
+        } = this.props;
+
         return (
-            <div className="tab-content">
-                {this.props.children[this.state.selected]}
+            <div className={`${prefixCls}-content`}>
+                {children[this.state.selected]}
             </div>
         );
     }
 
     render() {
         return (
-            <div className="tabs">
+            <div className={this.props.prefixCls}>
                 {this.renderTitles()}
                 {this.renderContent()}
             </div>

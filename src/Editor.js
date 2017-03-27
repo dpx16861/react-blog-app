@@ -51,7 +51,7 @@ class Editor extends Component {
 
         return (
             <form className="editor container" onSubmit={this.handlePostAdd}>
-                <Tabs selected={0}>
+                <Tabs>
                     <Pane label="Write">
                         <div className="form-group">
                             <input
