@@ -1,10 +1,23 @@
 import React, { Component } from 'react';
 import Moment from 'moment';
+
 import Markdown from './Markdown';
 
 class Post extends Component {
+    state = {
+        isExpanded: false
+    }
+
     handleDelete = (postID) => {
         this.props.onPostDelete(postID);
+    }
+
+    handleClick = () => {
+        this.setState((prevState) => {
+            return {
+                isExpanded: !prevState.isExpanded
+            }
+        });
     }
 
     date() {
@@ -18,19 +31,24 @@ class Post extends Component {
             content
         } = this.props;
 
+        const expandedClass = (this.state.isExpanded ? 'is-expanded' : '');
+
         return (
-            <article className="panel panel-default">
-                <div className="panel-heading">
-                    <div className="panel-meta">
-                        <h3 className="panel-title">
-                            {title}
-                        </h3>
-                        <span className="panel-time">
-                            ({this.date()})
-                        </span>
-                    </div>
+            <article className={`panel panel-default ${expandedClass}`}>
+                <div className="panel-heading" onClick={this.handleClick}>
+                    <h3 className="panel-title">
+                        {title}
+                    </h3>
+                    <span className="panel-time">
+                        ({this.date()})
+                    </span>
+                </div>
 
+                <div className="panel-body">
+                    <Markdown content={content} />
+                </div>
 
+                <div className="panel-footer text-right">
                     <button
                         className="btn btn-sm btn-danger"
                         type="button"
@@ -38,10 +56,6 @@ class Post extends Component {
                     >
                         Delete
                     </button>
-                </div>
-
-                <div className="panel-body">
-                    <Markdown content={content} />
                 </div>
             </article>
         )
