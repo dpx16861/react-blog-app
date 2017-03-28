@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import Markdown from './Markdown';
+
 import Tabs from './Tabs';
 import Pane from './Pane';
+import Markdown from './Markdown';
 
 class Editor extends Component {
     state = {

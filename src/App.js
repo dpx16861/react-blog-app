@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import { LOCALSTORAGE_NAMESPACE } from './utils/constants';
 
 import Editor from './Editor';
