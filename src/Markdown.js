@@ -8,8 +8,9 @@ class Markdown extends Component {
     }
 
     render() {
+        const { content } = this.props;
         return (
-            <div dangerouslySetInnerHTML={this.createMarkup(this.props.content)} />
+            <div dangerouslySetInnerHTML={this.createMarkup(content)} />
         )
     }
 }

@@ -8,7 +8,7 @@ import Posts from './Posts';
 class App extends Component {
     state = {
         posts: []
-    };
+    }
 
     componentDidMount() {
         const savedPosts = JSON.parse(localStorage.getItem(LOCALSTORAGE_NAMESPACE));

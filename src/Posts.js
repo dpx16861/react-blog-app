@@ -2,17 +2,17 @@ import React from 'react';
 
 import Post from './Post';
 
-const Posts = (props) =>
+const Posts = ({ posts, onPostDelete }) =>
     <div className="posts">
         <div className="container">
-            {props.posts.map((post, index) =>
+            {posts.map((post, index) =>
                 <Post
                     key={index}
                     id={post.id}
                     timestamp={post.timestamp}
                     title={post.title}
                     content={post.content}
-                    onPostDelete={props.onPostDelete}
+                    onPostDelete={onPostDelete}
                 />
             )}
         </div>

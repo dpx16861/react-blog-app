@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Pane = (props) =>
+const Pane = ({ children }) =>
     <div>
-        {props.children}
+        {children}
     </div>;
 
 export default Pane;
