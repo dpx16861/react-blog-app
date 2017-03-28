@@ -7,8 +7,8 @@ class Post extends Component {
 
     state = { isExpanded: false }
 
-    handleDelete = (id) => {
-        this.props.onPostDelete(id);
+    handleDelete = (postId) => {
+        this.props.onPostDelete(postId);
     }
 
     handleClick = () => {

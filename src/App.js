@@ -28,9 +28,9 @@ class App extends Component {
         });
     }
 
-    handlePostDelete = (postID) => {
+    handlePostDelete = (postId) => {
         this.setState({
-            posts: this.state.posts.filter((post) => post.id !== postID)
+            posts: this.state.posts.filter((post) => post.id !== postId)
         });
     }
 
