@@ -12,33 +12,12 @@ body {
     margin-bottom: 40px;
 }
 
+.editor-actions {
+    margin-top: 15px;
+}
+
 .nav-tabs {
     margin-bottom: 20px;
-}
-
-.panel-heading {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.panel-heading .btn {
-    opacity: 0;
-    transition: opacity .5s;
-}
-
-.panel:hover .panel-heading .btn {
-    opacity: 1;
-}
-
-.panel-meta {
-    display: flex;
-    align-items: center;
-}
-
-.panel-time {
-    margin-left: 10px;
-    color: #929292;
 }
 
 .tabs-content {
@@ -49,6 +28,25 @@ body {
     margin-bottom: 0;
 }
 
-.editor-actions {
-    margin-top: 15px;
+.panel.is-expanded .panel-body,
+.panel.is-expanded .panel-footer {
+    display: block;
+}
+
+.panel-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.panel-time {
+    margin-left: 10px;
+    color: #929292;
+}
+
+.panel-body,
+.panel-footer {
+    display: none;
 }
