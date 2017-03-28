@@ -11,21 +11,19 @@ class Editor extends Component {
     }
 
     handleTitleChange = (e) => {
-        this.setState({
-            title: e.target.value
-        });
+        this.setState({ title: e.target.value });
     }
 
     handleContentChange = (e) => {
-        this.setState({
-            content: e.target.value
-        });
+        this.setState({ content: e.target.value });
     }
 
     handlePostAdd = (e) => {
         e.preventDefault();
 
-        if (this.state.title && this.state.content) {
+        const { title, content } = this.state;
+
+        if (title && content) {
             this.props.onPostAdd({
                 ...this.state,
                 id: Date.now(),
@@ -44,10 +42,7 @@ class Editor extends Component {
     }
 
     render() {
-        const {
-            title,
-            content
-        } = this.state;
+        const { title, content } = this.state;
 
         return (
             <form className="editor container" onSubmit={this.handlePostAdd}>
@@ -76,14 +71,14 @@ class Editor extends Component {
                     </Pane>
 
                     <Pane label="Preview">
-                        {title || content
-                            ? (
-                                <div>
-                                    <h1>{title}</h1>
-                                    <Markdown content={content} />
-                                </div>
-                            ) : <p>Nothing to preview</p>
-                        }
+                        {title || content ? (
+                            <div>
+                                <h1>{title}</h1>
+                                <Markdown content={content} />
+                            </div>
+                        ) : (
+                            <p>Nothing to preview</p>
+                        )}
                     </Pane>
                 </Tabs>
 

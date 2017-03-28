@@ -4,12 +4,11 @@ import Moment from 'moment';
 import Markdown from './Markdown';
 
 class Post extends Component {
-    state = {
-        isExpanded: false
-    }
 
-    handleDelete = (postID) => {
-        this.props.onPostDelete(postID);
+    state = { isExpanded: false }
+
+    handleDelete = (id) => {
+        this.props.onPostDelete(id);
     }
 
     handleClick = () => {
@@ -20,19 +19,14 @@ class Post extends Component {
         });
     }
 
-    date() {
-        return Moment(this.props.timestamp).fromNow();
+    getDate() {
+        const { timestamp } = this.props;
+        return Moment(timestamp).fromNow();
     }
 
     render() {
-        const {
-            id,
-            title,
-            content
-        } = this.props;
-
+        const { id, title, content } = this.props;
         const expandedClass = (this.state.isExpanded ? 'is-expanded' : '');
-
         return (
             <article className={`panel panel-default ${expandedClass}`}>
                 <div className="panel-heading" onClick={this.handleClick}>
@@ -40,7 +34,7 @@ class Post extends Component {
                         {title}
                     </h3>
                     <span className="panel-time">
-                        ({this.date()})
+                        ({this.getDate()})
                     </span>
                 </div>
 
